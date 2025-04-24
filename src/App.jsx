@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import TaskList from './Components/TaskList'
-
 function App() {
   const [tasks, setTasks] = useState([]);
   const [taskName, setTaskName] = useState('');
@@ -36,6 +34,7 @@ function App() {
         setEditTaskId(null);
       } else {
         const newTask = {
+          id: Date.now(),
           name: taskName
         };
         setTasks([...tasks, newTask]);
@@ -58,10 +57,10 @@ function App() {
       setEditTaskId(null);
     }
   };
-  const homewors = [{ id: 1 , text: "hola" },{ id: 2 , text: "hola" }];
+
   return (
     <div className="container">
-      <h1>Gestor de Tareas</h1>
+      <h1>  Gestor de Tareas</h1>
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
@@ -71,28 +70,21 @@ function App() {
           onChange={handleChange} 
         />        
         
-        <button type="submit">{editTaskId !== null ? 'Update Task' : 'Add Task'}</button>
+        <button type="submit">{editTaskId !== null ? 'cambiar tarea' : 'agregar tarea'}</button>
       </form>
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
             <div>
               {task.name}
-              <button onClick={() => handleEdit(task.id)}>Completar</button>
+              <input type="checkbox" value="" id="checkDefault" onChange={() => handleEdit(task.id)}></input>
               <button onClick={() => handleDelete(task.id)}>Delete</button>
             </div>
             
           </li>
         ))}
       </ul>
-
-      <TaskList tasks={homewors}>
-
-      </TaskList>
-
     </div>
-
-
   );
 }
 
