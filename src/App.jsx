@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import TaskList from './Components/taskList';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -81,35 +82,35 @@ function App() {
       setEditTaskId(null);
     }
   };
-
+  const homewors = [{ id: 1 , text: "hola" },{ id: 2 , text: "hola" }];
   return (
     <div className="container">
       <h1>Task Manager</h1>
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
+        <input
+          type="text"
           name="name"
-          placeholder="Name" 
-          value={taskName} 
-          onChange={handleChange} 
+          placeholder="Name"
+          value={taskName}
+          onChange={handleChange}
         />
-        <input 
-          type="email" 
+        <input
+          type="email"
           name="email"
-          placeholder="Email" 
-          value={taskEmail} 
-          onChange={handleChange} 
+          placeholder="Email"
+          value={taskEmail}
+          onChange={handleChange}
         />
-        <input 
-          type="tel" 
+        <input
+          type="tel"
           name="phone"
-          placeholder="Phone" 
-          value={taskPhone} 
-          onChange={handleChange} 
+          placeholder="Phone"
+          value={taskPhone}
+          onChange={handleChange}
         />
-        <select 
-          name="type" 
-          value={taskType} 
+        <select
+          name="type"
+          value={taskType}
           onChange={handleChange}
         >
           <option value="">Select Type</option>
@@ -135,7 +136,14 @@ function App() {
           </li>
         ))}
       </ul>
+
+      <TaskList tasks={homewors}>
+
+      </TaskList>
+
     </div>
+
+
   );
 }
 

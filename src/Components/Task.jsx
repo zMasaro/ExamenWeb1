@@ -1,6 +1,6 @@
 import { useState } from "react";
 function Task({id,text, state = "pendiente"}) {
-    const [state, setState] = useState({state});
+    //const [state, setState] = useState({state});
     let tarea;
 
 
@@ -14,7 +14,7 @@ function Task({id,text, state = "pendiente"}) {
 
     return (
         <>
-        <input type={"checkbox"} onSelect={()=> setState("completada")}></input>
+        {/*<input type={"checkbox"} onSelect={()=> setState("completada")}></input>*/}
             {tarea}
         </>
     );
